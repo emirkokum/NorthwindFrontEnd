@@ -4,11 +4,12 @@ import { RouterOutlet } from '@angular/router';
 import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
 import { NaviComponent } from './components/navi/navi.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,ProductComponent,CategoryComponent,NaviComponent],
+  imports: [RouterOutlet,CommonModule,ProductComponent,CategoryComponent,NaviComponent,HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
