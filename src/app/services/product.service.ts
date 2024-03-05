@@ -5,14 +5,20 @@ import { Product } from '../models/product';
 import { ListResponseModel } from '../models/listResponseModel';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class ProductService {
-  apiUrl = 'https://localhost:44337/api/products/getall';
+	apiUrl = 'https://localhost:44337/api/';
 
-  constructor(private httpClient: HttpClient) {  } // Injection for api connection
+	constructor(private httpClient: HttpClient) { } // Injection for api connection
 
-  getProducts(): Observable<ListResponseModel<Product>> {
-    return this.httpClient.get<ListResponseModel<Product>>(this.apiUrl);
-  }
+	getProducts(): Observable<ListResponseModel<Product>> {
+		let newPath = this.apiUrl + "products/getall"
+		return this.httpClient.get<ListResponseModel<Product>>(newPath);
+	}
+
+	getProductsByCategory(categoryID: number): Observable<ListResponseModel<Product>> {
+		let newPath = this.apiUrl + "products/getbycategory?categoryId=" + categoryID
+		return this.httpClient.get<ListResponseModel<Product>>(newPath);
+	}
 }
