@@ -35,7 +35,7 @@ export class ProductAddComponent implements OnInit {
       this.productService.add(productModel).subscribe(response => {
         this.toastr.success(response.message, "Success")
       }, responseError => {
-        if (responseError.error.Errors.length > 0) {
+        if (responseError.error?.Errors?.length > 0) {
           for (let i = 0; i < responseError.error.Errors.length; i++) {
             this.toastr.error(responseError.error.Errors[i].ErrorMessage, "Validation Error")
           }
